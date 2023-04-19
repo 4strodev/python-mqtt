@@ -1,1 +1,3 @@
 virtual-env
+broker/mosquitto/*
+!broker/mosquitto/config

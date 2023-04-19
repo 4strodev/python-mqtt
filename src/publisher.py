@@ -2,7 +2,7 @@ import ssl
 import sys
 
 import paho.mqtt.client as paho
-broker = "broker.mqttdashboard.com"
+broker = "localhost"
 port = 1883
 # Crea la funció per callback. La funció que s'executa quan es produeix l'event on_publish
 
