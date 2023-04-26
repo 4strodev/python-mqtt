@@ -1,6 +1,3 @@
-import ssl
-import sys
-
 import paho.mqtt.client as paho
 broker = "localhost"
 port = 1883
@@ -9,7 +6,6 @@ port = 1883
 
 def on_publish(client, userdata, result):
     print("data published \n")
-    pass
 
 
 # Crea un objecte client
