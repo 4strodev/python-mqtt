@@ -33,6 +33,8 @@ def main():
         client_id='insplasll_1', clean_session=False)
     # Assigna les funcions callback
     client.on_connect = on_connect
+
+
     client.on_message = on_message
     client.on_disconnect = on_disconnect
     # Es connecta al broker
