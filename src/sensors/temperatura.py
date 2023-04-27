@@ -25,5 +25,5 @@ class Temperatura:
         print(message.payload)
 
     def connect(self):
-        self.connection.connect(f'command/{self.location}/llum/{self.sensorId}')
+        self.connection.connect(f'command/{self.location}/temperatura/{self.sensorId}')
         self.connection.client.loop_forever()
