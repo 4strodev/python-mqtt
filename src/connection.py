@@ -1,4 +1,5 @@
 import paho.mqtt.client as paho
+
 """
 Que ha de fer la connexio
 
@@ -7,6 +8,8 @@ Suscriures a un topic
     Permetre rebre la funcio on message per saber que ha de fer quen rep un missatge
 Enviar informacio a un topic
 """
+
+
 class Connection:
     broker = "localhost"
     port = 1883
