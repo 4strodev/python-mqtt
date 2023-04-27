@@ -1,25 +1,22 @@
-from connection import Connection
+from src.connection.connection import Connection
 
-class temperatura:
 
-    def __init__(self, graus: int, sensorId: str, location: str):
-        self.graus = graus
+class Persiana:
+
+    def __init__(self, obert: bool, sensorId: str, location: str):
+        self.obert = obert
         self.location = location
         self.sensorId = sensorId
         self.connection = Connection(sensorId, f'data/{self.location}/llum/{self.sensorId}')
         self.connection.client.on_message = self.on_message
 
-    def pujarTemperatura(self,graus):
-        self.graus = graus+1;
-        return self.graus
+    def obrir_persiana(self):
+        self.obert = True;
+        return self.obert
 
-    def baixarTemperatura(self,graus):
-        self.graus = graus-1;
-        return self.graus
-
-    def establirTemperatura(self, temperatura):
-        self.graus = temperatura
-        return self.graus
+    def tencar_persiana(self):
+        self.obert = False
+        return self.obert
 
     def on_message(self, client, userdata, message):
         print(message.payload)

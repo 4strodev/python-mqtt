@@ -1,4 +1,4 @@
-from connection import Connection
+from src.connection.connection import Connection
 
 
 class Llum:
@@ -10,11 +10,11 @@ class Llum:
         self.connection = Connection(sensorId, f'data/{self.location}/llum/{self.sensorId}')
         self.connection.client.on_message = self.on_message
 
-    def obrirLlum(self):
+    def obrir_llum(self):
         self.obert = True;
         return self.obert
 
-    def tencarLlum(self):
+    def tencar_llum(self):
         self.obert = False
         return self.obert
 
