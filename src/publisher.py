@@ -15,7 +15,7 @@ client1.on_publish = on_publish
 # Estableix la connexió
 client1.connect(broker, port)
 # Fa una publicacio
-ret = client1.publish("inspla/casa/llum/1", "on")
+ret = client1.publish("command/Menjador/llum/1", "on")
 if ret[0] == 0:
     print("El topic s'ha enviat correctament!")
 else:
