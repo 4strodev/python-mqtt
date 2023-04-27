@@ -1,3 +1,5 @@
+import json
+
 from src.connection.connection import Connection
 
 
@@ -11,12 +13,22 @@ class Llum:
         self.connection.client.on_message = self.on_message
 
     def obrir_llum(self):
-        self.obert = True;
-        return self.obert
+        self.obert = True
+        self.notify_state()
 
     def tencar_llum(self):
         self.obert = False
-        return self.obert
+        self.notify_state()
+
+    def notify_state(self):
+        data = {
+            "sensorId": self.sensorId,
+            "location": self.location,
+            "data": self.obert,
+            "sensor": "llum"
+        }
+        # json dumps el que fa es convertir un diccionari a un string
+        self.connection.send_data(json.dumps(data))
 
     def on_message(self, client, userdata, message):
         print(message.payload)
