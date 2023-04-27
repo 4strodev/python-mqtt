@@ -22,10 +22,7 @@ class Persiana:
 
     def notify_state(self):
         data = {
-            "sensorId": self.sensorId,
-            "location": self.location,
             "data": self.obert,
-            "sensor": "persiana"
         }
         # json dumps el que fa es convertir un diccionari a un string
         self.connection.send_data(json.dumps(data))
