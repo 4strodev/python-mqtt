@@ -1,3 +1,5 @@
+import json
+
 from src.connection.connection import Connection
 
 class Temperatura:
@@ -11,19 +13,26 @@ class Temperatura:
 
     def pujar_temperatura(self, graus):
         self.graus = graus+1;
-        return self.graus
+        self.notify_state()
 
     def baixar_temperatura(self, graus):
         self.graus = graus-1;
-        return self.graus
+        self.notify_state()
 
     def establir_temperatura(self, temperatura):
         self.graus = temperatura
-        return self.graus
+        self.notify_state()
+
+    def notify_state(self):
+        data = {
+            "data": self.graus,
+        }
+        # json dumps el que fa es convertir un diccionari a un string
+        self.connection.send_data(json.dumps(data))
 
     def on_message(self, client, userdata, message):
         print(message.payload)
 
     def connect(self):
-        self.connection.connect(f'command/{self.location}/llum/{self.sensorId}')
+        self.connection.connect(f'command/{self.location}/temperatura/{self.sensorId}')
         self.connection.client.loop_forever()

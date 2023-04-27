@@ -27,9 +27,6 @@ class Connection:
 
         self.client.on_connect = on_connect
 
-
-
-
     def send_data(self, data):
         response = self.client.publish(self.dataTopic, data)
         if response[0] != 0:

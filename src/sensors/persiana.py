@@ -1,3 +1,5 @@
+import json
+
 from src.connection.connection import Connection
 
 
@@ -12,15 +14,22 @@ class Persiana:
 
     def obrir_persiana(self):
         self.obert = True;
-        return self.obert
+        self.notify_state()
 
     def tencar_persiana(self):
         self.obert = False
-        return self.obert
+        self.notify_state()
+
+    def notify_state(self):
+        data = {
+            "data": self.obert,
+        }
+        # json dumps el que fa es convertir un diccionari a un string
+        self.connection.send_data(json.dumps(data))
 
     def on_message(self, client, userdata, message):
         print(message.payload)
 
     def connect(self):
-        self.connection.connect(f'command/{self.location}/llum/{self.sensorId}')
+        self.connection.connect(f'command/{self.location}/persiana/{self.sensorId}')
         self.connection.client.loop_forever()
