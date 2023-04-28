@@ -46,9 +46,9 @@ def triar_accio_sensor(tipus_sensor):
             accio_llum = int(input("Tria l'acció del llum: "))
             if accio_llum in range(1, 3):
                 if (accio_llum == 1):
-                    return "on"
+                    return "on", None
                 else:
-                    return "off"
+                    return "off", None
             else:
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
@@ -64,9 +64,9 @@ def triar_accio_sensor(tipus_sensor):
             accio_temperatura = int(input("Tria l'acció de la temperatura: "))
             if accio_temperatura in range(1, 4):
                 if (accio_temperatura == 1):
-                    return "increase"
+                    return "increase", None
                 elif (accio_temperatura == 2):
-                    return "decrease"
+                    return "decrease", None
                 else:
                     graus = int(input("Estableix la temperatura desitjada: "))
                     return "set", graus
@@ -84,9 +84,9 @@ def triar_accio_sensor(tipus_sensor):
             accio_persiana = int(input("Tria l'acció de la persiana: "))
             if accio_persiana in range(1, 3):
                 if (accio_persiana == 1):
-                    return "open"
+                    return "open", None
                 else:
-                    return "close"
+                    return "close", None
             else:
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
