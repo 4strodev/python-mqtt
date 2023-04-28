@@ -1,24 +1,3 @@
-if __name__ == '__main__':
-    pass
-
-llista_id_llums_menjador = [1, 2, 3]
-llista_id_llums_cuina = [1, 2]
-llista_id_llums_lavabo = [1, 2]
-llista_id_llums_habitacio1 = [1]
-llista_id_llums_habitacio2 = [1]
-
-llista_id_temperatura_menjador = [1]
-llista_id_temperatura_cuina = [1]
-llista_id_temperatura_lavabo = [1]
-llista_id_temperatura_habitacio1 = [1]
-llista_id_temperatura_habitacio2 = [1]
-
-llista_id_persianes_menjador = [1, 2]
-llista_id_persianes_cuina = [1]
-llista_id_persianes_lavabo = [1]
-llista_id_persianes_habitacio1 = [1]
-
-
 def triar_localitzacio():
     print("""
     Localització:
@@ -116,7 +95,7 @@ def triar_accio_sensor(tipus_sensor):
         print("Opció incorrecta.")
         return
 
-def seleccionar_informacio_sensor:
+def seleccionar_informacio_sensor():
     localitzacio = ''
     tipus_sensor = ''
     id_sensor = ''
