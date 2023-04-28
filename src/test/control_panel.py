@@ -53,155 +53,8 @@ def triar_tipus_sensor():
             continue
 
 
-def triar_id_sensor(llista_id_llums_menjador, llista_id_llums_cuina, llista_id_llums_lavabo, llista_id_llums_habitacio1,
-                    llista_id_llums_habitacio2, llista_id_temperatura_menjador, llista_id_temperatura_lavabo,
-                    llista_id_temperatura_habitacio1, llista_id_temperatura_habitacio2, llista_id_persianes_menjador,
-                    llista_id_persianes_cuina, llista_id_persianes_lavabo, llista_id_persianes_habitacio1,
-                    localitzacio, tipus_sensor):
-
-    if localitzacio == 1 & tipus_sensor == 1:
-        print(llista_id_llums_menjador)
-        while True:
-            id_sensor_menjador_llum = int(input("Tria l'id del sensor: "))
-            if id_sensor_menjador_llum in llista_id_llums_menjador:
-                return id_sensor_menjador_llum
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 1 & tipus_sensor == 2:
-        print(llista_id_temperatura_menjador)
-        while True:
-            id_sensor_menjador_temperaura = int(input("Tria l'id del sensor: "))
-            if id_sensor_menjador_temperaura in llista_id_temperatura_menjador:
-                return id_sensor_menjador_temperaura
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 1 & tipus_sensor == 3:
-        print(llista_id_persianes_menjador)
-        while True:
-            id_sensor_menjador_persianes = int(input("Tria l'id del sensor: "))
-            if id_sensor_menjador_persianes in llista_id_persianes_menjador:
-                return id_sensor_menjador_persianes
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 2 & tipus_sensor == 1:
-        print(llista_id_llums_cuina)
-        while True:
-            id_sensor_cuina_llum = int(input("Tria l'id del sensor: "))
-            if id_sensor_cuina_llum in llista_id_llums_cuina:
-                return id_sensor_cuina_llum
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 2 & tipus_sensor == 2:
-        print(llista_id_temperatura_cuina)
-        while True:
-            id_sensor_cuina_temperaura = int(input("Tria l'id del sensor: "))
-            if id_sensor_cuina_temperaura in llista_id_temperatura_cuina:
-                return id_sensor_cuina_temperaura
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 2 & tipus_sensor == 3:
-        print(llista_id_persianes_cuina)
-        while True:
-            id_sensor_cuina_persianes = int(input("Tria l'id del sensor: "))
-            if id_sensor_cuina_persianes in llista_id_persianes_cuina:
-                return id_sensor_cuina_persianes
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 3 & tipus_sensor == 1:
-        print(llista_id_llums_lavabo)
-        while True:
-            id_sensor_lavabo_llum = int(input("Tria l'id del sensor: "))
-            if id_sensor_lavabo_llum in llista_id_llums_lavabo:
-                return id_sensor_lavabo_llum
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 3 & tipus_sensor == 2:
-        print(llista_id_temperatura_lavabo)
-        while True:
-            id_sensor_lavabo_temperaura = int(input("Tria l'id del sensor: "))
-            if id_sensor_lavabo_temperaura in llista_id_temperatura_lavabo:
-                return id_sensor_lavabo_temperaura
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 3 & tipus_sensor == 3:
-        print(llista_id_persianes_lavabo)
-        while True:
-            id_sensor_lavabo_persianes = int(input("Tria l'id del sensor: "))
-            if id_sensor_lavabo_persianes in llista_id_persianes_lavabo:
-                return id_sensor_lavabo_persianes
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 4 & tipus_sensor == 1:
-        print(llista_id_llums_habitacio1)
-        while True:
-            id_sensor_habitacio1_llum = int(input("Tria l'id del sensor: "))
-            if id_sensor_habitacio1_llum in llista_id_llums_habitacio1:
-                return id_sensor_habitacio1_llum
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 4 & tipus_sensor == 2:
-        print(llista_id_temperatura_habitacio1)
-        while True:
-            id_sensor_habitacio1_temperaura = int(input("Tria l'id del sensor: "))
-            if id_sensor_habitacio1_temperaura in llista_id_temperatura_habitacio1:
-                return id_sensor_habitacio1_temperaura
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 4 & tipus_sensor == 3:
-        print(llista_id_persianes_habitacio1)
-        while True:
-            id_sensor_habitacio1_persianes = int(input("Tria l'id del sensor: "))
-            if id_sensor_habitacio1_persianes in llista_id_persianes_habitacio1:
-                return id_sensor_habitacio1_persianes
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 5 & tipus_sensor == 1:
-        print(llista_id_llums_habitacio2)
-        while True:
-            id_sensor_habitacio2_llum = int(input("Tria l'id del sensor: "))
-            if id_sensor_habitacio2_llum in llista_id_llums_habitacio2:
-                return id_sensor_habitacio2_llum
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    elif localitzacio == 5 & tipus_sensor == 2:
-        print(llista_id_temperatura_habitacio2)
-        while True:
-            id_sensor_habitacio2_temperaura = int(input("Tria l'id del sensor: "))
-            if id_sensor_habitacio2_temperaura in llista_id_temperatura_habitacio2:
-                return id_sensor_habitacio2_temperaura
-            else:
-                print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
-                continue
-
-    else:
-        print("Opció incorrecta")
-
+def seleccionar_id_sensor():
+    return int(input("Introdueix l'id del sensor: "))
 
 def triar_accio_sensor(tipus_sensor):
     if tipus_sensor == 1:
@@ -213,7 +66,10 @@ def triar_accio_sensor(tipus_sensor):
         while True:
             accio_llum = int(input("Tria l'acció del llum: "))
             if accio_llum in range(1, 3):
-                return accio_llum
+                if (accio_llum == 1):
+                    return "on"
+                else:
+                    return "off"
             else:
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
@@ -228,7 +84,13 @@ def triar_accio_sensor(tipus_sensor):
         while True:
             accio_temperatura = int(input("Tria l'acció de la temperatura: "))
             if accio_temperatura in range(1, 4):
-                return accio_temperatura
+                if (accio_temperatura == 1):
+                    return "increase"
+                elif (accio_temperatura == 2):
+                    return "decrease"
+                else:
+                    graus = int(input("Estableix la temperatura desitjada: "))
+                    return "set", graus
             else:
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
@@ -236,13 +98,16 @@ def triar_accio_sensor(tipus_sensor):
     elif tipus_sensor == 3:
         print("""
                     Acció persiana:
-                    1 - Pujar persiana
-                    2 - Baixar persiana
+                    1 - Obrir persiana
+                    2 - Tancar persiana
                     """)
         while True:
             accio_persiana = int(input("Tria l'acció de la persiana: "))
             if accio_persiana in range(1, 3):
-                return accio_persiana
+                if (accio_persiana == 1):
+                    return "open"
+                else:
+                    return "close"
             else:
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
@@ -251,45 +116,47 @@ def triar_accio_sensor(tipus_sensor):
         print("Opció incorrecta.")
         return
 
+def seleccionar_informacio_sensor:
+    localitzacio = ''
+    tipus_sensor = ''
+    id_sensor = ''
+    accio_sensor = ''
 
-localitzacio = ''
-tipus_sensor = ''
-id_sensor = ''
-accio_sensor = ''
+    while True:
+        try:
+            localitzacio = triar_localitzacio()
+            break
+        except ValueError:
+            print("El valor introduït ha de ser un número enter.")
+            continue
 
-while True:
-    try:
-        localitzacio = triar_localitzacio()
-        break
-    except ValueError:
-        print("El valor introduït ha de ser un número enter.")
-        continue
+    while True:
+        try:
+            tipus_sensor = triar_tipus_sensor()
+            break
+        except ValueError:
+            print("El valor introduït ha de ser un número enter.")
+            continue
 
-while True:
-    try:
-        tipus_sensor = triar_tipus_sensor()
-        break
-    except ValueError:
-        print("El valor introduït ha de ser un número enter.")
-        continue
+    while True:
+        try:
+            id_sensor = seleccionar_id_sensor()
+            break
+        except ValueError:
+            print("El valor introduït ha de ser un número enter.")
+            continue
 
-while True:
-    try:
-        id_sensor = triar_id_sensor(llista_id_llums_menjador, llista_id_llums_cuina, llista_id_llums_lavabo,
-                                    llista_id_llums_habitacio1, llista_id_llums_habitacio2,
-                                    llista_id_temperatura_menjador, llista_id_temperatura_lavabo,
-                                    llista_id_temperatura_habitacio1, llista_id_temperatura_habitacio2,
-                                    llista_id_persianes_menjador, llista_id_persianes_cuina, llista_id_persianes_lavabo,
-                                    llista_id_persianes_habitacio1, localitzacio, tipus_sensor)
-        break
-    except ValueError:
-        print("El valor introduït ha de ser un número enter.")
-        continue
+    while True:
+        try:
+            accio_sensor = triar_accio_sensor(tipus_sensor)
+            break
+        except ValueError:
+            print("El valor introduït ha de ser un número enter.")
+            continue
 
-while True:
-    try:
-        accio_sensor = triar_accio_sensor(tipus_sensor)
-        break
-    except ValueError:
-        print("El valor introduït ha de ser un número enter.")
-        continue
+    return localitzacio, tipus_sensor, id_sensor, accio_sensor
+
+
+if __name__ == '__main__':
+    while True:
+        localitzacio, tipus_sensor, id_sensor, accio_sensor = seleccionar_informacio_sensor()
