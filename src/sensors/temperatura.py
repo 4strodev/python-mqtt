@@ -1,6 +1,6 @@
 import json
 
-from src.connection.connection import Connection
+from connection.connection import Connection
 
 class Temperatura:
 
