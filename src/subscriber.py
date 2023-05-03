@@ -1,9 +1,9 @@
 import paho.mqtt.client
 import ssl
 import sys
-broker = "localhost"
+broker = "192.168.17.169"
 port = 1883
-topic = 'inspla/casa/llum/1'
+topic = 'Command/Menjador/Llum/1'
 
 
 # Crea la funció per callback. La funció que s'executa quan es produeix l'event de client connectat
@@ -21,9 +21,7 @@ def on_disconnect(client, userdata, rc):
 
 def on_message(client, userdata, message):
     print('------------------------------')
-    print('topic: %s' % message.base_topic)
     print('payload: %s' % message.payload)
-    print('qos: %d' % message.qos)
 
 # Defineix una funció d'inicialització
 

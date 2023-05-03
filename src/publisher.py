@@ -1,5 +1,5 @@
 import paho.mqtt.client as paho
-broker = "localhost"
+broker = "192.168.17.169"
 port = 1883
 # Crea la funció per callback. La funció que s'executa quan es produeix l'event on_publish
 
@@ -15,7 +15,7 @@ client1.on_publish = on_publish
 # Estableix la connexió
 client1.connect(broker, port)
 # Fa una publicacio
-ret = client1.publish("command/Menjador/llum/1", "on")
+ret = client1.publish("Command/Menjador/llum/1", "on")
 if ret[0] == 0:
     print("El topic s'ha enviat correctament!")
 else:
