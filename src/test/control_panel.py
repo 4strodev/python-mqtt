@@ -1,4 +1,17 @@
+import json
+import paho.mqtt.client as paho
+
+def on_publish(client, userdata, result):
+    print("data published \n")
+
 def triar_localitzacio():
+    localitzacions = [
+        'Menjador',
+        'Cuina',
+        'Lavabo',
+        'Habitacio1',
+        'Habitacio2'
+    ]
     print("""
     Localització:
     1 - Menjador
@@ -10,13 +23,14 @@ def triar_localitzacio():
     while True:
         localitzacio = int(input("Tria la localització:"))
         if localitzacio in range(1, 6):
-            return localitzacio
+            return localitzacions[localitzacio - 1]
         else:
             print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
             continue
 
 
 def triar_tipus_sensor():
+    tipus_sensors = ['Llumn', 'Temperatura', 'Persiana']
     print("""
     Tipus sensor: 
     1 - Llum
@@ -26,7 +40,7 @@ def triar_tipus_sensor():
     while True:
         tipus_sensor = int(input("Tria el tipus de sensor:"))
         if tipus_sensor in range(1, 4):
-            return tipus_sensor
+            return tipus_sensors[tipus_sensor - 1]
         else:
             print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
             continue
@@ -36,7 +50,7 @@ def seleccionar_id_sensor():
     return int(input("Introdueix l'id del sensor: "))
 
 def triar_accio_sensor(tipus_sensor):
-    if tipus_sensor == 1:
+    if tipus_sensor == 'Llum':
         print("""
         Acció llum:
         1 - Encendre llum
@@ -53,7 +67,7 @@ def triar_accio_sensor(tipus_sensor):
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
 
-    elif tipus_sensor == 2:
+    elif tipus_sensor == 'Temperatura':
         print("""
                     Acció temperatura:
                     1 - Pujar temperatura
@@ -74,7 +88,7 @@ def triar_accio_sensor(tipus_sensor):
                 print("El valor introduït ha d'estar dins el rang de les opcions indicades.")
                 continue
 
-    elif tipus_sensor == 3:
+    elif tipus_sensor == 'Persiana':
         print("""
                     Acció persiana:
                     1 - Obrir persiana
@@ -137,5 +151,22 @@ def seleccionar_informacio_sensor():
 
 
 if __name__ == '__main__':
+
+    # Crea un objecte client
+    client = paho.Client("control1")
+    # Assigna la funció callback
+    client.on_publish = on_publish
+    # Estableix la connexió
+    client.connect('172.16.252.47', 1883)
+
     while True:
         localitzacio, tipus_sensor, id_sensor, accio_sensor = seleccionar_informacio_sensor()
+        action, value = accio_sensor
+
+        topic = f'Command/{localitzacio}/{tipus_sensor}/{id_sensor}'
+        json_action = json.dumps({'action': action})
+
+        if (action == 'set'):
+            json_action = json.dumps({'action': action, 'value': value})
+
+        client.publish(topic, json_action)
