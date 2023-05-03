@@ -30,7 +30,7 @@ def triar_localitzacio():
 
 
 def triar_tipus_sensor():
-    tipus_sensors = ['Llumn', 'Temperatura', 'Persiana']
+    tipus_sensors = ['Llum', 'Temperatura', 'Persiana']
     print("""
     Tipus sensor: 
     1 - Llum
@@ -157,13 +157,14 @@ if __name__ == '__main__':
     # Assigna la funció callback
     client.on_publish = on_publish
     # Estableix la connexió
-    client.connect('172.16.252.47', 1883)
+    client.connect('localhost', 1883)
 
     while True:
         localitzacio, tipus_sensor, id_sensor, accio_sensor = seleccionar_informacio_sensor()
         action, value = accio_sensor
 
         topic = f'Command/{localitzacio}/{tipus_sensor}/{id_sensor}'
+        print(topic)
         json_action = json.dumps({'action': action})
 
         if (action == 'set'):
