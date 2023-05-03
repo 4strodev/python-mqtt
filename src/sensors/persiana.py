@@ -1,16 +1,12 @@
 import json
+from .sensor import Sensor
 
-from connection.connection import Connection
 
-
-class Persiana:
+class Persiana(Sensor):
 
     def __init__(self, obert: bool, sensorId: str, location: str):
+        super().__init__(sensorId, location, 'persiana')
         self.obert = obert
-        self.location = location
-        self.sensorId = sensorId
-        self.connection = Connection(sensorId, f'data/{self.location}/llum/{self.sensorId}')
-        self.connection.client.on_message = self.on_message
 
     def obrir_persiana(self):
         self.obert = True;
@@ -29,7 +25,3 @@ class Persiana:
 
     def on_message(self, client, userdata, message):
         print(message.payload)
-
-    def connect(self):
-        self.connection.connect(f'command/{self.location}/persiana/{self.sensorId}')
-        self.connection.client.loop_forever()

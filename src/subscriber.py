@@ -21,7 +21,7 @@ def on_disconnect(client, userdata, rc):
 
 def on_message(client, userdata, message):
     print('------------------------------')
-    print('topic: %s' % message.topic)
+    print('topic: %s' % message.base_topic)
     print('payload: %s' % message.payload)
     print('qos: %d' % message.qos)
 

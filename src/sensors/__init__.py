@@ -1,1 +1,1 @@
-from . import temperatura, persiana, llum
+from . import temperatura, persiana, llum, sensor
