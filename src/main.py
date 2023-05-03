@@ -2,22 +2,31 @@ import asyncio
 
 from sensors.llum import Llum
 from sensors.sensor import Sensor
+import concurrent.futures
 
 
-def connect_sensors(sensor_list: list[Sensor]) -> list[asyncio.Task]:
-    sensor_tasks: list[asyncio.Task] = []
-    for sensor in sensor_list:
-        task = asyncio.create_task(sensor.connect())
-        sensor_tasks.append(task)
 
-    return sensor_tasks
+# async def connect_sensors(sensor_list: list[Sensor]) -> list[asyncio.Task]:
+#     sensor_tasks: list[asyncio.Task] = []
+#     with ThreadPoolExecutor() as pool:
+#         for sensor in sensor_list:
+#             future = asyncio.get_running_loop().run_in_executor(pool, sensor.connect())
+#             task = asyncio.create_task(await future)
+#             sensor_tasks.append(task)
+#
+#     return sensor_tasks
 
-async def main():
+if __name__ == "__main__":
     llum = Llum(False, '1', 'Menjador')
     llum2 = Llum(False, '2', 'Menjador')
 
-    sensor_tasks = connect_sensors([llum, llum2])
+    sensors = [llum, llum2]
+    futures = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=len(sensors)) as executor:
+        for sensor in sensors:
+            futures.append(executor.submit(sensor.connect))
 
-if __name__ == "__main__":
-    asyncio.run(main())
+    for future in concurrent.futures.as_completed(futures):
+        result = future.result()
+        print(result)
 

@@ -9,7 +9,7 @@ class Sensor():
         self.sensor_type = sensor_type
 
         self.base_topic = f'{self.location}/{self.sensor_type}/{self.sensor_id}'
-        self.connection = Connection(self.sensor_id, f'data/{self.base_topic}')
+        self.connection = Connection(self.sensor_id, f'Data/{self.base_topic}')
 
         self.connection.client.on_message = self.on_message
 
@@ -17,6 +17,6 @@ class Sensor():
     def on_message(self,  client, userdata, message):
         pass
 
-    async def connect(self):
-        self.connection.connect(f'command/{self.base_topic}')
+    def connect(self):
+        self.connection.connect(f'Command/{self.base_topic}')
         self.connection.client.loop_forever()
