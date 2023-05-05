@@ -4,9 +4,9 @@ from .sensor import Sensor
 
 class Persiana(Sensor):
 
-    def __init__(self, obert: bool, sensorId: str, location: str):
-        super().__init__(sensorId, location, 'persiana')
-        self.obert = obert
+    def __init__(self, sensorId: str, location: str):
+        super().__init__(sensorId, location, 'Persiana')
+        self.obert = False
 
     def obrir_persiana(self):
         self.obert = True;

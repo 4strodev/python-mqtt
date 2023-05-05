@@ -3,9 +3,9 @@ from .sensor import Sensor
 
 class Temperatura(Sensor):
 
-    def __init__(self, graus: int, sensor_id: str, location: str):
-        super().__init__(sensor_id=sensor_id, location=location, sensor_type='temperatura')
-        self.graus = graus
+    def __init__(self, sensor_id: str, location: str):
+        super().__init__(sensor_id=sensor_id, location=location, sensor_type='Temperatura')
+        self.graus = 0
 
 
     def pujar_temperatura(self, graus):

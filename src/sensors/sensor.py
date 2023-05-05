@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from connection.connection import Connection
+from src.connection.connection import Connection
 
 class Sensor():
     def __init__(self, sensor_id: str, location: str, sensor_type: str):

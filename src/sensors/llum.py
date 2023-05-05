@@ -3,9 +3,9 @@ from .sensor import Sensor
 
 
 class Llum(Sensor):
-    def __init__(self, obert: bool, sensorId: str, location: str):
-        super().__init__(sensorId, location, 'llum')
-        self.obert = obert
+    def __init__(self, sensorId: str, location: str):
+        super().__init__(sensorId, location, 'Llum')
+        self.obert = False
 
     def obrir_llum(self):
         self.obert = True
