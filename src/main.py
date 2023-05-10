@@ -25,16 +25,18 @@ def initialize_sensors(config) -> list[Sensor]:
                     sensors.append(sensor)
 
     return sensors
-def connect_sensors(sensors: list):
-    futures = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=len(sensors)) as executor:
-        for sensor in sensors:
-            futures.append(executor.submit(sensor.connect))
 
-    for future in concurrent.futures.as_completed(futures):
-        result = future.result()
-        print(result)
 
 if __name__ == "__main__":
     sensors = initialize_sensors(config)
-    connect_sensors(sensors)
+    futures = []
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=len(sensors)) as executor:
+            for sensor in sensors:
+                futures.append(executor.submit(sensor.connect))
+
+        for future in concurrent.futures.as_completed(futures):
+            result = future.result()
+            print(result)
+    finally:
+        executor.shutdown()
