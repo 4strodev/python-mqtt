@@ -24,4 +24,9 @@ class Persiana(Sensor):
         self.connection.send_data(json.dumps(data))
 
     def on_message(self, client, userdata, message):
-        print(message.payload)
+        arrayString = message.payload.decode()
+        diccionari = json.loads(arrayString)
+        if diccionari["action"] == "open":
+            self.obrir_persiana()
+        if diccionari["action"] == "close":
+            self.tencar_persiana()
