@@ -24,6 +24,7 @@ class Llum(Sensor):
 
     def on_message(self, client, userdata, message):
         arrayString = message.payload.decode()
+        diccionari = json.load(arrayString)
         print(type(message.payload))
         print("prova correcte")
-        print(arrayString)
+        print(diccionari)
