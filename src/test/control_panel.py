@@ -47,7 +47,7 @@ def triar_tipus_sensor():
 
 
 def seleccionar_id_sensor():
-    return int(input("Introdueix l'id del sensor: "))
+    return input("Introdueix l'id del sensor: ")
 
 def triar_accio_sensor(tipus_sensor):
     if tipus_sensor == 'Llum':
