@@ -14,6 +14,7 @@ function onFailure(message) {
 function onMessageArrived(r_message) {
     console.log('message arrived');
     console.log(r_message);
+    console.log(r_message.payloadString)
 }
 
 function onConnected() {
@@ -26,6 +27,7 @@ client.onMessageArrived = onMessageArrived;
 client.onConnected = onConnected;
 
 function onConnect() {
+    client.subscribe('Data/Menjador/Llum/Menjador_Llum_1');
     console.log('connect');
 }
 
@@ -37,7 +39,6 @@ var options = {
 
 };
 client.connect(options);
-client.subscribe('Data/Menjador/Llum/Menjador_Llum_1');
 
 </script>
 
