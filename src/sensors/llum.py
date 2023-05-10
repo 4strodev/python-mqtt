@@ -24,6 +24,9 @@ class Llum(Sensor):
 
     def on_message(self, client, userdata, message):
         arrayString = message.payload.decode()
-        print(type(message.payload))
-        print("prova correcte")
-        print(arrayString)
+        diccionari = json.loads(arrayString)
+        if diccionari["action"] == "on":
+            self.obrir_llum()
+        if diccionari["action"] == "off":
+            self.tencar_llum()
+
