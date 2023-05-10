@@ -23,4 +23,7 @@ class Llum(Sensor):
         self.connection.send_data(json.dumps(data))
 
     def on_message(self, client, userdata, message):
-        print(message.payload)
+        arrayString = message.payload.decode()
+        print(type(message.payload))
+        print("prova correcte")
+        print(arrayString)
