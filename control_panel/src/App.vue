@@ -43,8 +43,8 @@ client.connect(options);
 </script>
 
 <template>
-  <ReactiveInput msg="Vite + Vue" />
-  <NavigationBar></NavigationBar>
+    <NavigationBar id="Nav"></NavigationBar>
+    <ReactiveInput msg="Vite + Vue" />
 </template>
 
 <style scoped>
@@ -60,4 +60,10 @@ client.connect(options);
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
+
+#Nav {
+    margin-top: 0px;
+
+}
+
 </style>

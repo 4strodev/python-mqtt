@@ -1,21 +1,28 @@
 <script setup lang="ts">
 import SensorsNavigator from "./SensorsNavigator.vue";
 
-const locations = ["Menjador","Cuina","Lavabo","Habitacio1","Habitacio2"]
+const sensors = ["Llum","Persiana","Temperatura"]
+
 </script>
 
 <template>
 <nav>
-    <ul>
-        <li v-for="location in locations">
-            <h2>{{location}}</h2>
-        </li>
-    </ul>
+    <header>
+                <button v-for="sensors in sensors" style="white-space: nowrap">{{sensors}}</button>
+    </header>
+
 </nav>
 </template>
 
 <style scoped>
-li {
-    list-style: none;
+
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-around;
+}
+button {
+    padding: 1em;
 }
 </style>
