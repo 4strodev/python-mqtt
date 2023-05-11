@@ -1,7 +1,45 @@
 <script setup lang="ts">
 import ReactiveInput from './components/ReactiveInput.vue'
-import NavBar from "./components/NavigationBar.vue";
 import NavigationBar from "./components/NavigationBar.vue";
+declare let Paho: any;
+const client = new Paho.MQTT.Client("localhost", 9001, "client_tu_puta_madre");
+function onConnectionLost() {
+    console.log('connection lost')
+}
+//S'executa si no  s'ha pogut connectar al servidor
+function onFailure(message) {
+    console.log('failure')
+}
+//S'executa quan arriba un missatge
+function onMessageArrived(r_message) {
+    console.log('message arrived');
+    console.log(r_message);
+    console.log(r_message.payloadString)
+}
+
+function onConnected() {
+
+}
+
+client.onConnectionLost = onConnectionLost;
+client.onFailure = onFailure;
+client.onMessageArrived = onMessageArrived;
+client.onConnected = onConnected;
+
+function onConnect() {
+    client.subscribe('Data/Menjador/Llum/Menjador_Llum_1');
+    console.log('connect');
+}
+
+var options = {
+    timeout: 3,
+    cleanSession: true,
+    onSuccess: onConnect,
+    onFailure: onFailure,
+
+};
+client.connect(options);
+
 </script>
 
 <template>
