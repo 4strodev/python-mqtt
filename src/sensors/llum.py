@@ -18,6 +18,7 @@ class Llum(Sensor):
     def notify_state(self):
         data = {
             "data": self.obert,
+            "id": self.sensor_id
         }
         # json dumps el que fa es convertir un diccionari a un string
         self.connection.send_data(json.dumps(data))
