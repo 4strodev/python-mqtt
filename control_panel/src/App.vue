@@ -20,7 +20,7 @@ async function connect() {
     });
 
     try {
-        mqttService.subscribe('Data/Menjador/Llum/Menjador_Llum_1');
+        mqttService.subscribe('Data/#');
     } catch (err) {
         console.error(err);
     }
