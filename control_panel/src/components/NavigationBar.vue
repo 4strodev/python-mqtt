@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import SensorsNavigator from "./SensorsNavigator.vue";
-
 const sensors = ["Llum","Persiana","Temperatura"]
 
 </script>
@@ -8,7 +6,7 @@ const sensors = ["Llum","Persiana","Temperatura"]
 <template>
 <nav>
     <header>
-                <button v-for="sensors in sensors" style="white-space: nowrap">{{sensors}}</button>
+        <button v-for="sensors in sensors" style="white-space: nowrap">{{sensors}}</button>
     </header>
 
 </nav>

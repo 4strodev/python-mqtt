@@ -2,7 +2,7 @@
 import ReactiveInput from './components/ReactiveInput.vue'
 import NavigationBar from "./components/NavigationBar.vue";
 import {MqttService} from './services/mqtt.service.ts';
-import {onMounted} from 'vue';
+import {onMounted, ref} from 'vue';
 
 async function connect() {
     console.log('Connecting to mqtt');
@@ -25,13 +25,29 @@ async function connect() {
         console.error(err);
     }
 }
+const locations = ["Menjador", "Cuina", "Lavabo", "Habitacio_1", "Habitacio_2"]
+const sensors = ["Llum", "Temperatura", "Persiana"]
 
-onMounted(connect);
+const sensorId = ref("");
+const location = ref<string>();
+const sensorType = ref<string>();
+
+function sendData() {
+    console.log(sensorId.value, location.value, sensorType.value)
+}
+
+// onMounted(connect);
 </script>
 
 <template>
-    <NavigationBar id="Nav"></NavigationBar>
-    <ReactiveInput msg="Vite + Vue" />
+    <input type="text" v-model="sensorId">
+    <select name="select" v-model="location">
+        <option v-for="location of locations" :value="location">{{location}}</option>
+    </select>
+    <select name="select" v-model="sensorType">
+        <option v-for="sensor of sensors" :value="sensor">{{sensor}}</option>
+    </select>
+    <button @click="sendData">Send command</button>
 </template>
 
 <style scoped>
