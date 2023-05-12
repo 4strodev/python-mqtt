@@ -23,7 +23,9 @@ class Temperatura(Sensor):
     def notify_state(self):
         data = {
             "data": self.graus,
-            "id": self.sensor_id
+            "id": self.sensor_id,
+            "location": self.location,
+            "type": "Temperatura"
         }
         # json dumps el que fa es convertir un diccionari a un string
         self.connection.send_data(json.dumps(data))
