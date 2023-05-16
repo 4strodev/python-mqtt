@@ -17,7 +17,28 @@ async function connect() {
     }
 
     mqttService.onMessage((message) => {
-        console.log(message)
+        try {
+            console.log(JSON.parse(message.payloadString))
+            let messageJSON = JSON.parse(message.payloadString);
+            let location = sensorsState.value[messageJSON.location]
+            if (!location) {
+                location = {}
+                sensorsState.value[messageJSON.location] = location
+            }
+            let sensorType = sensorsState.value[messageJSON.location][messageJSON.type]
+
+            if(!sensorType){
+                sensorType = {};
+                location[messageJSON.type] = sensorType;
+            }
+
+            sensorType[messageJSON.id] = messageJSON.data;
+
+            console.log(sensorsState.value)
+        } catch (err) {
+            console.error(err);
+        }
+
     });
 
     try {
@@ -35,6 +56,7 @@ const sensorType = ref<string>();
 
 const sensorAction = ref<string>();
 const degrees = ref<number>();
+const sensorsState = ref<any>({});
 
 const sensorActions = {
     "Llum": ["on", "off"],
