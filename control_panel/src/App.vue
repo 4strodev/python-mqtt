@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ReactiveInput from './components/ReactiveInput.vue'
-import NavigationBar from "./components/NavigationBar.vue";
 import {MqttService} from './services/mqtt.service.ts';
 import {onMounted, ref} from 'vue';
 
@@ -32,8 +30,17 @@ const sensorId = ref("");
 const location = ref<string>();
 const sensorType = ref<string>();
 
+const sensorAction = ref<string>();
+const degrees = ref<number>();
+
+const sensorActions = {
+    "Llum": ["on", "off"],
+    "Persiana" : ["open", "close"],
+    "Temperatura" : ["increase", "decrease", "set"]
+}
+
 function sendData() {
-    console.log(sensorId.value, location.value, sensorType.value)
+    console.log(sensorId.value, location.value, sensorType.value, sensorAction.value, degrees.value)
 }
 
 // onMounted(connect);
@@ -41,32 +48,24 @@ function sendData() {
 
 <template>
     <input type="text" v-model="sensorId">
+
     <select name="select" v-model="location">
         <option v-for="location of locations" :value="location">{{location}}</option>
     </select>
+
     <select name="select" v-model="sensorType">
         <option v-for="sensor of sensors" :value="sensor">{{sensor}}</option>
     </select>
+
     <button @click="sendData">Send command</button>
+
+    <div v-for="action of sensorActions[sensorType]">
+        <input type="radio" :id="action" :name="`accions_${sensorType}`" v-model="sensorAction" :value="action">
+        <label for="html">{{ action }}</label><br>
+    </div>
+
+    <input type="number" v-if="sensorAction == 'set'" v-model="degrees">
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-
-#Nav {
-    margin-top: 0px;
-
-}
-
 </style>
