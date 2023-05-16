@@ -44,7 +44,8 @@ const sensorActions = {
 
 function sendData() {
     console.log(sensorId.value, location.value, sensorType.value, sensorAction.value, degrees.value)
-    mqttService.client.send(``)
+    const data = {action: sensorAction.value, value: degrees.value};
+    mqttService.client.send(`Command/${location.value}/${sensorType.value}/${sensorId.value}`, JSON.stringify(data), 2, false)
 }
 
 // onMounted(connect);
