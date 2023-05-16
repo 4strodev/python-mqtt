@@ -2,9 +2,12 @@
 import {MqttService} from './services/mqtt.service.ts';
 import {onMounted, ref} from 'vue';
 
+const mqttService = new MqttService("localhost", 9001, "Client_control_panel");
+
+onMounted(connect)
+
 async function connect() {
     console.log('Connecting to mqtt');
-    const mqttService = new MqttService("localhost", 9001, "Client_control_panel");
     try {
         await mqttService.connect();
         console.log('connected')
@@ -41,6 +44,7 @@ const sensorActions = {
 
 function sendData() {
     console.log(sensorId.value, location.value, sensorType.value, sensorAction.value, degrees.value)
+    mqttService.client.send(``)
 }
 
 // onMounted(connect);
