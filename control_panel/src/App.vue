@@ -98,13 +98,25 @@ function sendData() {
     <div>
         <div v-for="(item, location) in sensorsState">
             <h2>{{ location }}</h2>
-            <ul>
-                <li></li>
+            <ul class="location-list">
+                <li v-for="(sensors, tipusSensor) in item">
+                    <span>{{ tipusSensor }}</span>
+                    <ul>
+                        <li v-for="(value, sensorId) in sensors">{{sensorId}} {{value}}</li>
+                    </ul>
+                </li>
             </ul>
-            <p>{{ JSON.stringify(item) }}</p>
         </div>
     </div>
 </template>
 
 <style scoped>
+ul {
+    list-style: none;
+    padding: 0;
+}
+.location-list {
+    display: flex;
+    gap: 1rem;
+}
 </style>
