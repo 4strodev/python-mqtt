@@ -27,7 +27,7 @@ async function connect() {
             }
             let sensorType = sensorsState.value[messageJSON.location][messageJSON.type]
 
-            if(!sensorType){
+            if (!sensorType) {
                 sensorType = {};
                 location[messageJSON.type] = sensorType;
             }
@@ -47,6 +47,7 @@ async function connect() {
         console.error(err);
     }
 }
+
 const locations = ["Menjador", "Cuina", "Lavabo", "Habitacio_1", "Habitacio_2"]
 const sensors = ["Llum", "Temperatura", "Persiana"]
 
@@ -60,8 +61,8 @@ const sensorsState = ref<any>({});
 
 const sensorActions = {
     "Llum": ["on", "off"],
-    "Persiana" : ["open", "close"],
-    "Temperatura" : ["increase", "decrease", "set"]
+    "Persiana": ["open", "close"],
+    "Temperatura": ["increase", "decrease", "set"]
 }
 
 function sendData() {
@@ -78,11 +79,11 @@ function sendData() {
     <input type="text" v-model="sensorId">
 
     <select name="select" v-model="location">
-        <option v-for="location of locations" :value="location">{{location}}</option>
+        <option v-for="location of locations" :value="location">{{ location }}</option>
     </select>
 
     <select name="select" v-model="sensorType">
-        <option v-for="sensor of sensors" :value="sensor">{{sensor}}</option>
+        <option v-for="sensor of sensors" :value="sensor">{{ sensor }}</option>
     </select>
 
     <button @click="sendData">Send command</button>
@@ -95,7 +96,13 @@ function sendData() {
     <input type="number" v-if="sensorAction == 'set'" v-model="degrees">
 
     <div>
-        <h2 v-for="(item, location) in sensorsState">{{location}}</h2>
+        <div v-for="(item, location) in sensorsState">
+            <h2>{{ location }}</h2>
+            <ul>
+                <li></li>
+            </ul>
+            <p>{{ JSON.stringify(item) }}</p>
+        </div>
     </div>
 </template>
 
