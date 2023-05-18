@@ -67,6 +67,7 @@ const sensorActions = {
 function sendData() {
     console.log(sensorId.value, location.value, sensorType.value, sensorAction.value, degrees.value)
     const data = {action: sensorAction.value, value: degrees.value};
+    console.log(data);
     mqttService.client.send(`Command/${location.value}/${sensorType.value}/${sensorId.value}`, JSON.stringify(data), 2, false)
 }
 
@@ -92,6 +93,10 @@ function sendData() {
     </div>
 
     <input type="number" v-if="sensorAction == 'set'" v-model="degrees">
+
+    <div>
+        <h2 v-for="(item, location) in sensorsState">{{location}}</h2>
+    </div>
 </template>
 
 <style scoped>
