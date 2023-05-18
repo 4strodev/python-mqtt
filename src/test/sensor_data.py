@@ -9,7 +9,7 @@ config = {
         "Temperatura": 1,
         "Persiana": 1
     },
-    "Labavo": {
+    "Lavabo": {
         "Llum": 2,
         "Temperatura": 1,
         "Persiana": 1
